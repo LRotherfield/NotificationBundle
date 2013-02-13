@@ -1,0 +1,4 @@
+services:
+  lrotherfield.flash:
+    class: LRotherfield\Bundle\FlashMessageBundle\Service\Flash
+    arguments: [@session]
