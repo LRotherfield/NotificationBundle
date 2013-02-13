@@ -1,6 +1,6 @@
 services:
-  lrotherfield.message:
-    class: LRotherfield\Bundle\NotificationBundle\Notification\Message
+  lrotherfield.notify:
+    class: LRotherfield\Bundle\NotificationBundle\Notification\Notifications
     arguments: [@session]
 
   lrotherfield.twig.message_extension:

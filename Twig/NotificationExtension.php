@@ -16,30 +16,30 @@ class NotificationExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'render_messages' => new \Twig_Function_Method($this, 'renderMessages', array('is_safe' => array('html'))),
-            'render_message' => new \Twig_Function_Method($this, 'renderMessage', array('is_safe' => array('html')))
+            'notify_all' => new \Twig_Function_Method($this, 'renderAll', array('is_safe' => array('html'))),
+            'notify_one' => new \Twig_Function_Method($this, 'renderOne', array('is_safe' => array('html')))
         );
     }
 
-    public function renderMessages()
+    public function renderAll()
     {
-        $messages = $this->container->get("lrotherfield.message")->all();
+        $notifications_array = $this->container->get("lrotherfield.notify")->all();
 
         return $this->container
             ->get('templating')
-            ->render("LRotherfieldNotificationBundle:Message:multiple.html.twig", compact("messages"));
+            ->render("LRotherfieldNotificationBundle:Notification:multiple.html.twig", compact("notifications_array"));
     }
 
-    public function renderMessage($name)
+    public function renderOne($name)
     {
-        if (!$this->container->get("lrotherfield.message")->has($name)) {
+        if (!$this->container->get("lrotherfield.notify")->has($name)) {
             return false;
         }
-        $messages = $this->container->get("lrotherfield.message")->get($name);
+        $notifications = $this->container->get("lrotherfield.notify")->get($name);
 
         return $this->container
             ->get('templating')
-            ->render("LRotherfieldNotificationBundle:Message:single.html.twig", compact("messages"));
+            ->render("LRotherfieldNotificationBundle:Notification:single.html.twig", compact("notifications"));
     }
 
 
