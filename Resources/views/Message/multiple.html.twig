@@ -1,0 +1,13 @@
+{% javascripts '@LRotherfieldNotificationBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% stylesheets '@LRotherfieldNotificationBundle/Resources/public/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+<script>
+    {% for notifications in messages %}
+        {% for message in notifications %}
+            humane.log("{{ message.message }}", { timeout: 4000, clickToClose: true, addnCls: 'humane-error' })
+        {% endfor %}
+    {% endfor %}
+</script>

@@ -1,4 +1,10 @@
 services:
-  lrotherfield.flash:
-    class: LRotherfield\Bundle\FlashMessageBundle\Service\Flash
+  lrotherfield.message:
+    class: LRotherfield\Bundle\NotificationBundle\Notification\Message
     arguments: [@session]
+
+  lrotherfield.twig.message_extension:
+      class: LRotherfield\Bundle\NotificationBundle\Twig\NotificationExtension
+      arguments: [@service_container]
+      tags:
+          - { name: twig.extension }
