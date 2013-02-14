@@ -15,9 +15,10 @@ class Notifications
     {
         $arguments += array(
             "message" => "",
-            "style" => "notice",
+            "class" => "notice",
             "type" => "flash",
             "lifetime" => "5000",
+            "click_to_close" => false,
             "sticky" => false
         );
         if($arguments["type"] === "flash"){

@@ -1,3 +1,7 @@
+parameters:
+  lrotherfield.notify.js: true
+  lrotherfield.notify.css: true
+
 services:
   lrotherfield.notify:
     class: LRotherfield\Bundle\NotificationBundle\Notification\Notifications
