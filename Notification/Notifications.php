@@ -15,6 +15,7 @@ class Notifications
     {
         $arguments += array(
             "message" => "",
+            "title" => "",
             "class" => "notice",
             "type" => "flash",
             "lifetime" => "5000",
