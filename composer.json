@@ -1,0 +1,25 @@
+{
+    "name": "lrotherfield/notification-bundle",
+    "type": "symfony-bundle",
+    "description": "Simple notification bundle to create flash and instant notifications to be presented to the user with javascript and css transitions",
+    "keywords": ["contact", "bundle"],
+    "homepage": "http://github.com/LRotherfield/NotificationBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luke Rotherfield",
+            "email": "l.rotherfield@nibble-development.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "require-dev": {
+        "symfony/framework-bundle": ">=2.1,<=2.2-dev"
+    },
+    "autoload": {
+        "psr-0": { "LRotherfield\\Bundle\\NotificationBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "LRotherfield/Bundle/NotificationBundle"
+}
