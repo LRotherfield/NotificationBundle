@@ -6,13 +6,13 @@ add customisable javascript notifications using humane.js.
 
 ##Install instructions
 
-The simplest way to install this bundle is to use composer.  First, add the notification bundle as a requirement:
+The simplest way to install this bundle is to use composer.
+
+Add the notification bundle as a requirement to composer.json:
 
 ```json
-//composer.json
 {
     "require":{
-        //...
         "lrotherfield/notification-bundle": "dev-master"
     }
 ```
@@ -75,7 +75,7 @@ An argument can be given in notify_all() and notify_one() to specify the id of a
 
 There are a number of options available when using the add() method to add a notification:
 
-```
+```php
 //Defaults listed below
 "message" => "", // The message to render, will be wrapped in p tags
 "title" => "", // The title to render, will be wrapped in h2 tags
