@@ -22,6 +22,9 @@ class LRotherfieldNotificationExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter("lrotherfield.notify.js", $config['include_humane_js']);
+        $container->setParameter("lrotherfield.notify.css", $config['include_humane_css']);
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
