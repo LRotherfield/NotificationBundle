@@ -67,10 +67,11 @@ There are two twig functions for rendering notifications:
 {{ notify_one("foo") }} {# renders all "foo" notifications like the one added in the above example #}
 ```
 
-An argument can be given in notify_all() and notify_one() to specify the id of an element to append the message to:
+An argument can be given in notify_all() and notify_one() to specify the id of an element to append the message to as a child:
 
 ```html
-{# Append to element with id="baz" #}
+<div id="baz"></div>
+
 {{ notify_all("baz") }}
 {# or #}
 {{ notify_one("foo", "baz") }}
