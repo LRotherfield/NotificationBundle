@@ -1,8 +1,6 @@
 #Notification Bundle
 
-This bundle provides methods for creating flash notifications and instant notifications that will rendered with
-javascript to the user.  Symfony2 already has a flashBag for flash messages, this bundle builds from there to
-add customisable javascript notifications using humane.js.
+This bundle provides methods for creating flash notifications and instant notifications that will rendered with javascript to the user.  Symfony2 already has a flashBag for flash messages, this bundle builds from there to add customisable javascript notifications using humane.js.
 
 ##Install instructions
 
@@ -17,7 +15,11 @@ Add the notification bundle as a requirement to composer.json:
     }
 ```
 
-Update the dependecies using composer: `php composer.phar update`
+Update the dependecies using composer:
+
+```shell
+$ php composer.phar update
+```
 
 Add the notification bundle to the AppKernal.php file:
 
@@ -59,12 +61,15 @@ $this->container->get('lrotherfield.notify')->add("foo", array("message" => "bar
 
 There are two twig functions for rendering notifications:
 
-`notify_all()` renders all notifications
+```twig
+{{ notify_all() }} {# renders all notifications #}
 
-`notify_one("foo")` renders all "foo" notifications like the one added in the above example
+{{ notify_one("foo") }} {# renders all "foo" notifications like the one added in the above example #}
+```
 
 An argument can be given in notify_all() and notify_one() to specify the id of an element to append the message to:
-```
+
+```twig
 # Append to element with id="baz"
 {{ notify_all("baz") }}
 # or
@@ -77,11 +82,13 @@ There are a number of options available when using the add() method to add a not
 
 ```php
 //Defaults listed below
-"message" => "", // The message to render, will be wrapped in p tags
-"title" => "", // The title to render, will be wrapped in h2 tags
-"class" => "notice", // css class to add to the notification div
-"type" => "flash", // flash or instant, instant lasts until a page refresh, flash lasts for one redirect
-"lifetime" => "5000", // Lifetime of the notification in ms
-"click_to_close" => false, //true or false, true will make notification disappear only on click, false will use lifetime
-"sticky" => false // Makes the notification sticky and not disappear
+array(
+    "message" => "", // The message to render, will be wrapped in p tags
+    "title" => "", // The title to render, will be wrapped in h2 tags
+    "class" => "notice", // css class to add to the notification div
+    "type" => "flash", // flash or instant, instant lasts until a page refresh, flash lasts for one redirect
+    "lifetime" => "5000", // Lifetime of the notification in ms
+    "click_to_close" => false, //true or false, true will make notification disappear only on click, false will use lifetime
+    "sticky" => false // Makes the notification sticky and not disappear
+)
 ```
