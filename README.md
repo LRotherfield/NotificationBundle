@@ -61,7 +61,7 @@ $this->container->get('lrotherfield.notify')->add("foo", array("message" => "bar
 
 There are two twig functions for rendering notifications:
 
-```twig
+```html
 {{ notify_all() }} {# renders all notifications #}
 
 {{ notify_one("foo") }} {# renders all "foo" notifications like the one added in the above example #}
@@ -69,10 +69,10 @@ There are two twig functions for rendering notifications:
 
 An argument can be given in notify_all() and notify_one() to specify the id of an element to append the message to:
 
-```twig
-# Append to element with id="baz"
+```html
+{# Append to element with id="baz" #}
 {{ notify_all("baz") }}
-# or
+{# or #}
 {{ notify_one("foo", "baz") }}
 ```
 
