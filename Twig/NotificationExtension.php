@@ -26,10 +26,11 @@ class NotificationExtension extends \Twig_Extension
     public function renderAll($container = false)
     {
         $notifications_array = $this->container->get("lrotherfield.notify")->all();
-        $javascript = $this->check("js");
-        $stylesheet = $this->check("css");
 
         if (count($notifications_array) > 0) {
+            $javascript = $this->check("js");
+            $stylesheet = $this->check("css");
+
             return $this->container
                 ->get('templating')
                 ->render(
@@ -47,10 +48,11 @@ class NotificationExtension extends \Twig_Extension
             return false;
         }
         $notifications = $this->container->get("lrotherfield.notify")->get($name);
-        $javascript = $this->check("js");
-        $stylesheet = $this->check("css");
 
         if (count($notifications) > 0) {
+            $javascript = $this->check("js");
+            $stylesheet = $this->check("css");
+
             return $this->container
                 ->get('templating')
                 ->render(
