@@ -29,12 +29,16 @@ class NotificationExtension extends \Twig_Extension
         $javascript = $this->check("js");
         $stylesheet = $this->check("css");
 
-        return $this->container
-            ->get('templating')
-            ->render(
-                "LRotherfieldNotificationBundle:Notification:multiple.html.twig",
-                compact("notifications_array", "container", "javascript", "stylesheet")
-            );
+        if (count($notifications_array) > 0) {
+            return $this->container
+                ->get('templating')
+                ->render(
+                    "LRotherfieldNotificationBundle:Notification:multiple.html.twig",
+                    compact("notifications_array", "container", "javascript", "stylesheet")
+                );
+        }
+
+        return null;
     }
 
     public function renderOne($name, $container = false)
@@ -46,12 +50,16 @@ class NotificationExtension extends \Twig_Extension
         $javascript = $this->check("js");
         $stylesheet = $this->check("css");
 
-        return $this->container
-            ->get('templating')
-            ->render(
-                "LRotherfieldNotificationBundle:Notification:single.html.twig",
-                compact("notifications", "container", "javascript", "stylesheet")
-            );
+        if (count($notifications) > 0) {
+            return $this->container
+                ->get('templating')
+                ->render(
+                    "LRotherfieldNotificationBundle:Notification:single.html.twig",
+                    compact("notifications", "container", "javascript", "stylesheet")
+                );
+        }
+
+        return null;
     }
 
     public function getName()
@@ -61,10 +69,12 @@ class NotificationExtension extends \Twig_Extension
 
     protected function check($resource)
     {
-        if($this->container->getParameter("lrotherfield.notify.$resource") && $this->$resource){
+        if ($this->container->getParameter("lrotherfield.notify.$resource") && $this->$resource) {
             $this->$resource = false;
+
             return true;
         }
+
         return false;
     }
 
