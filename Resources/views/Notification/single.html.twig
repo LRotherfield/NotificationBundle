@@ -1,20 +1,26 @@
-{% if javascript %}
-    {% javascripts '@LRotherfieldNotificationBundle/Resources/public/js/*' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endif %}
-{% if stylesheet %}
-    {% stylesheets '@LRotherfieldNotificationBundle/Resources/public/css/*' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endif %}
-<script>
-    addLoadEvent(function()
-    {
-        var notify = humane.create({container: {{ (container ? "document.getElementById('"~container~"')" : "false") | raw }}})
-        {% for notification in notifications %}
-            notify.log("{{ (notification.title == "" ? "" : "<h2>"~notification.title~"</h2>") | raw }}{{ (notification.message == "" ? "" : "<p>"~notification.message~"</p>") | raw }}", { timeout: {{ notification.sticky ? 0 : notification.lifetime }}, clickToClose: {{ notification.click_to_close ? "true" : "false" }}, addnCls: "{{ notification.class }}"});
-        {% endfor %}
-    });
-</script>
+{% block javascripts %}
+    {{ parent() }}
+    {% if javascript %}
+        {% javascripts '@LRotherfieldNotificationBundle/Resources/public/js/*' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endif %}
+    <script type="text/javascript">
+        addLoadEvent(function()
+        {
+            var notify = humane.create({container: {{ (container ? "document.getElementById('"~container~"')" : "false") | raw }}})
+            {% for notification in notifications %}
+                notify.log("{{ (notification.title == "" ? "" : "<h2>"~notification.title~"</h2>") | raw }}{{ (notification.message == "" ? "" : "<p>"~notification.message~"</p>") | raw }}", { timeout: {{ notification.sticky ? 0 : notification.lifetime }}, clickToClose: {{ notification.click_to_close ? "true" : "false" }}, addnCls: "{{ notification.class }}"});
+            {% endfor %}
+        });
+    </script>
+{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% if stylesheet %}
+        {% stylesheets '@LRotherfieldNotificationBundle/Resources/public/css/*' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endif %}
+{% endblock %}
