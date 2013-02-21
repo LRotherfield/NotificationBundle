@@ -1,0 +1,10 @@
+{% if stylesheet %}
+    {% stylesheets '@LRotherfieldNotificationBundle/Resources/public/css/*' %}
+    <link type="text/css" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endif %}
+{% if javascript %}
+    {% javascripts '@LRotherfieldNotificationBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endif %}
