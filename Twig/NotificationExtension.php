@@ -19,7 +19,8 @@ class NotificationExtension extends \Twig_Extension
     {
         return array(
             'notify_all' => new \Twig_Function_Method($this, 'renderAll', array('is_safe' => array('html'))),
-            'notify_one' => new \Twig_Function_Method($this, 'renderOne', array('is_safe' => array('html')))
+            'notify_one' => new \Twig_Function_Method($this, 'renderOne', array('is_safe' => array('html'))),
+            'notify_resources' => new \Twig_Function_Method($this, 'renderResources', array('is_safe' => array('html')))
         );
     }
 
@@ -28,14 +29,11 @@ class NotificationExtension extends \Twig_Extension
         $notifications_array = $this->container->get("lrotherfield.notify")->all();
 
         if (count($notifications_array) > 0) {
-            $javascript = $this->check("js");
-            $stylesheet = $this->check("css");
-
             return $this->container
                 ->get('templating')
                 ->render(
                     "LRotherfieldNotificationBundle:Notification:multiple.html.twig",
-                    compact("notifications_array", "container", "javascript", "stylesheet")
+                    compact("notifications_array", "container")
                 );
         }
 
@@ -50,34 +48,27 @@ class NotificationExtension extends \Twig_Extension
         $notifications = $this->container->get("lrotherfield.notify")->get($name);
 
         if (count($notifications) > 0) {
-            $javascript = $this->check("js");
-            $stylesheet = $this->check("css");
-
             return $this->container
                 ->get('templating')
                 ->render(
                     "LRotherfieldNotificationBundle:Notification:single.html.twig",
-                    compact("notifications", "container", "javascript", "stylesheet")
+                    compact("notifications", "container")
                 );
         }
 
         return null;
     }
 
+    public function renderResources()
+    {
+        return $this->container
+            ->get('templating')
+            ->render("LRotherfieldNotificationBundle:Notification:resources.html.twig");
+    }
+
     public function getName()
     {
         return 'lrotherfield_notification_extension';
-    }
-
-    protected function check($resource)
-    {
-        if ($this->container->getParameter("lrotherfield.notify.$resource") && $this->$resource) {
-            $this->$resource = false;
-
-            return true;
-        }
-
-        return false;
     }
 
 }

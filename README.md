@@ -59,12 +59,20 @@ $this->container->get('lrotherfield.notify')->add("foo", array("message" => "bar
 
 ###Render notifications
 
-There are two twig functions for rendering notifications:
+Humane js and css files are required in the head tag for this class to function.  Before the closing head tag, run the twig function `notify_resources()`:
+
+```html
+    {{ notify_resources() }}
+</head>
+```
+
+There are two twig functions for rendering notifications, they should be called just before the closing body tag:
 
 ```html
 {{ notify_all() }} {# renders all notifications #}
 
 {{ notify_one("foo") }} {# renders all "foo" notifications like the one added in the above example #}
+</body>
 ```
 
 An argument can be given in notify_all() and notify_one() to specify the id of an element to append the message to as a child:
