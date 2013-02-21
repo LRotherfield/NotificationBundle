@@ -1,3 +1,6 @@
+{% if stylesheet %}
+    {% include "LRotherfieldNotificationBundle:Notification:css.html.twig" %}
+{% endif %}
 {% if javascript %}
     {% javascripts '@LRotherfieldNotificationBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
@@ -14,6 +17,3 @@
         {% endfor %}
     });
 </script>
-{% if stylesheet %}
-    {% include "LRotherfieldNotificationBundle:Notification:css.html.twig" %}
-{% endif %}
