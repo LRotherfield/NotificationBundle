@@ -2,8 +2,8 @@
     var notify = humane.create({container: {{ (container ? "document.getElementById('"~container~"')" : "false") | raw }}});
     {% for notifications in notifications_array %}
         {% for notification in notifications %}
-           // notify.log("{{ (notification.title == "" ? "" : "<h2>"~notification.title~"</h2>") | raw }}{{ (notification.message == "" ? "" : "<p>"~notification.message~"</p>") | raw }}", { timeout: {{ notification.sticky ? 0 : notification.lifetime }}, clickToClose: {{ notification.click_to_close ? "true" : "false" }}, addnCls: "{{ notification.class }}"});
-            notify.log("{{ (notification.title == "" ? "" : "<h2>"~notification.title~"</h2>") | raw }}{{ (notification.message == "" ? "" : "<p>"~notification.message~"</p>") | raw }}", {timeout: {{ notification.sticky ? 0 : notification.lifetime }}, clickToClose: {{ notification.click_to_close ? "true" : "false" }}, addnCls: '{{ notification.class }}'});
+           notify.log("{{ (notification.title == "" ? "" : "<h2>"~notification.title~"</h2>") | raw }}{{ (notification.message == "" ? "" : "<p>"~notification.message~"</p>") | raw }}", { timeout: {{ notification.sticky ? 0 : notification.lifetime }}, clickToClose: {{ notification.click_to_close ? "true" : "false" }}, addnCls: "{{ notification.class }}"});
+            //notify.log("{{ (notification.title == "" ? "" : "<h2>"~notification.title~"</h2>") | raw }}{{ (notification.message == "" ? "" : "<p>"~notification.message~"</p>") | raw }}", {timeout: {{ notification.sticky ? 0 : notification.lifetime }}, clickToClose: {{ notification.click_to_close ? "true" : "false" }}, addnCls: '{{ notification.class }}'});
         {% endfor %}
     {% endfor %}
 </script>
