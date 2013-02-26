@@ -21,8 +21,12 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('l_rotherfield_notification');
 
         $rootNode->children()
-            ->booleanNode("include_humane_js")->defaultTrue()->end()
-            ->booleanNode("include_humane_css")->defaultTrue()->end()
+            ->scalarNode("message")->defaultValue("")->end()
+            ->scalarNode("title")->defaultValue("")->end()
+            ->scalarNode("class")->defaultValue("notice")->end()
+            ->scalarNode("type")->defaultValue("flash")->end()
+            ->scalarNode("lifetime")->defaultValue(6000)->end()
+            ->booleanNode("click_to_close")->defaultFalse()->end()
             ->end();
 
         // Here you should define the parameters that are allowed to

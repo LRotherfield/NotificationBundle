@@ -4,24 +4,17 @@ namespace LRotherfield\Bundle\NotificationBundle\Notification;
 
 class Notifications
 {
-    private $session, $flashes = array();
+    private $session, $flashes = array(), $defaults = array();
     
-    public function __construct(\Symfony\Component\HttpFoundation\Session\Session $session)
+    public function __construct(\Symfony\Component\HttpFoundation\Session\Session $session, array $defaults)
     {
         $this->session = $session;
+        $this->defaults = $defaults;
     }
     
     public function add($name, array $arguments = array())
     {
-        $arguments += array(
-            "message" => "",
-            "title" => "",
-            "class" => "notice",
-            "type" => "flash",
-            "lifetime" => "5000",
-            "click_to_close" => false,
-            "sticky" => false
-        );
+        $arguments += $this->defaults;
         if($arguments["type"] === "flash"){
             $this->session->getFlashBag()->add($name, $arguments);
         } elseif($arguments["type"] == "instant") {

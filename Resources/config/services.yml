@@ -1,7 +1,15 @@
 services:
   lrotherfield.notify:
     class: LRotherfield\Bundle\NotificationBundle\Notification\Notifications
-    arguments: [@session]
+    arguments: 
+      session: @session
+      defaults:
+        message: %lrotherfield.notify.message%
+        title: %lrotherfield.notify.title%
+        class: %lrotherfield.notify.class%
+        type: %lrotherfield.notify.type%
+        lifetime: %lrotherfield.notify.lifetime%
+        click_to_close: %lrotherfield.notify.click_to_close%
 
   lrotherfield.twig.message_extension:
       class: LRotherfield\Bundle\NotificationBundle\Twig\NotificationExtension
