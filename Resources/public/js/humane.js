@@ -124,7 +124,7 @@
                 try{
                     this.el.filters.item('DXImageTransform.Microsoft.Alpha').Opacity = opacity*100
                 } catch(err){
-                    console.log(err);
+                    //console.log(err);
                 }
             }else{
                 this.el.style.opacity = String(opacity)
