@@ -17,7 +17,7 @@ class Notifications
         $arguments += $this->defaults;
         if($arguments["type"] === "flash"){
             $this->session->getFlashBag()->add($name, $arguments);
-        } elseif($arguments["type"] == "instant") {
+        } elseif($arguments["type"] === "instant") {
             if(!isset($this->flashes[$name])){
                 $this->flashes[$name] = array();
             }

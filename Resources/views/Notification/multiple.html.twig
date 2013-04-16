@@ -2,7 +2,7 @@
     var notify = humane.create({container: {{ (container ? "document.getElementById('"~container~"')" : "false") | raw }}});
     {% for notifications in notifications_array %}
         {% for notification in notifications %}
-           notify.log("{{ (notification.title == "" ? "" : "<h2>"~notification.title~"</h2>") | raw }}{{ (notification.message == "" ? "" : "<p>"~notification.message~"</p>") | raw }}", { timeout: {{ notification.lifetime }}, clickToClose: {{ notification.click_to_close ? "true" : "false" }}, addnCls: "{{ notification.class }}"});
+           notify.log("{{ (notification.title is defined and notification.title != "" ? "<h2>"~notification.title~"</h2>" : "") | raw }}{{ (notification.message is defined and notification.message == "" ? "<p>"~notification.message~"</p>" : "") | raw }}", { timeout: {{ notification.lifetime is defined ? notification.lifetime : 5000 }}, clickToClose: {{ notification.click_to_close is defined and notification.click_to_close ? "true" : "false" }}, addnCls: "{{ notification.class is defined ? notification.class : "" }}"});
         {% endfor %}
     {% endfor %}
 </script>

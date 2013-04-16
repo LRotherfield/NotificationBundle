@@ -52,7 +52,6 @@
         this.timeout = 'timeout' in o ? o.timeout : 2500
         this.waitForMove = o.waitForMove || false
         this.clickToClose = o.clickToClose || false
-        this.forceNew = o.forceNew || false
         this.container = o.container
 
         try { this._setupEl() } // attempt to setup elements
@@ -123,10 +122,8 @@
             if (ENV.useFilter){
                 try{
                     this.el.filters.item('DXImageTransform.Microsoft.Alpha').Opacity = opacity*100
-                } catch(err){
-                    //console.log(err);
-                }
-            }else{
+                } catch(err){}
+            } else {
                 this.el.style.opacity = String(opacity)
             }
         },
