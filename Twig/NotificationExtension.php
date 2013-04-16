@@ -18,9 +18,9 @@ class NotificationExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_Function_Method('notify_all', array($this, 'renderAll'), array('is_safe' => array('html'))),
-            new \Twig_Function_Method('notfiy_one', array($this, 'renderOne'), array('is_safe' => array('html'))),
-            new \Twig_Function_Method('notify_resources', array($this, 'renderResources'), array('is_safe' => array('html')))
+            new Twig_SimpleFunction('notify_all', array($this, 'renderAll'), array('is_safe' => array('html'))),
+            new Twig_SimpleFunction('notfiy_one', array($this, 'renderOne'), array('is_safe' => array('html'))),
+            new Twig_SimpleFunction('notify_resources', array($this, 'renderResources'), array('is_safe' => array('html')))
         );
     }
 
