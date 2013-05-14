@@ -19,7 +19,7 @@ class NotificationExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction('notify_all', array($this, 'renderAll'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('notfiy_one', array($this, 'renderOne'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('notify_one', array($this, 'renderOne'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('notify_resources', array($this, 'renderResources'), array('is_safe' => array('html')))
         );
     }
